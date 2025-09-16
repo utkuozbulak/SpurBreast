@@ -14,7 +14,7 @@ This repository contains the **SpurBreast** dataset, a curated real-world breast
 
 ## General Information
 
-Datasets can be downloaded using **[this link](++this link++)**, and should be extracted into the `/data` folder.
+Datasets can be downloaded using _LINK_COMING_SOON_, and should be extracted into the `/data` folder.
 
 In the `/src` folder, the file `cls_dataset.py` contains a bare-bones implementation of a PyTorch dataset that you can use directly.  
 This file provides the `SpurBreastDataset` class, which can be initialized as follows:
