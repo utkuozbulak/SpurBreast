@@ -24,18 +24,33 @@ from cls_dataset import SpurBreastDataset
 
 data_folder = '../data'
 spurious_feature = 'field_strength'
-split = 'training'
-aug = None  # or any other PyTorch transform
+aug = ...  # PyTorch transformations
 
-training_dataset = SpurBreastDataset(data_folder, spurious_feature, split, aug)
+split = 'training'
+tr_dataset = SpurBreastDataset(data_folder, spurious_feature, split, aug)
+
+split = 'validation'
+val_dataset = SpurBreastDataset(data_folder, spurious_feature, split, aug)
+
+split = 'test'
+ts_dataset = SpurBreastDataset(data_folder, spurious_feature, split, aug)
 ```
 
 Using this dataset, you can train your own model by specifying one of the following spurious features:
 
 ```python
-['field_strength', 'menopause', 'race_and_ethnicity', 'surgery_type', 'vertical_flip']
+features = ['field_strength', 'menopause', 'race_and_ethnicity', 'surgery_type', 'vertical_flip']
 ```
+
+Out of the three datasets (train, validation, test), the training and validation splits contain spurious correlations, while the test split does not. This setup lets you evaluate your model on data that shares the same spurious correlations as the training set as well as on data free of those correlations.
+
 Our experiments show that field_strength and vertical_flip (vertical orientation) introduce the strongest spurious signals. Other features (menopause, race_and_ethnicity, surgery_type) have weaker or minimal effects.
+
+We also provide several splits that are created with patient-based random sampling which do not contain spurious correlations. For those, you can call the same class with one of the following splits.
+
+```python
+baseline_splits = ['baseline_high', 'baseline_mid', 'baseline_low']
+```
 
 ## License
 
