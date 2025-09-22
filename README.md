@@ -26,14 +26,11 @@ data_folder = '../data'
 spurious_feature = 'field_strength'
 aug = ...  # PyTorch transformations
 
-split = 'training'
-tr_dataset = SpurBreastDataset(data_folder, spurious_feature, split, aug)
+tr_dataset = SpurBreastDataset(data_folder, spurious_feature, 'training', aug)
 
-split = 'validation'
-val_dataset = SpurBreastDataset(data_folder, spurious_feature, split, aug)
+val_dataset = SpurBreastDataset(data_folder, spurious_feature, 'validation', aug)
 
-split = 'test'
-ts_dataset = SpurBreastDataset(data_folder, spurious_feature, split, aug)
+ts_dataset = SpurBreastDataset(data_folder, spurious_feature, 'test', aug)
 ```
 
 Using this dataset, you can train your own model by specifying one of the following spurious features:
